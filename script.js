@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function() {
 'use strict';
 let tab = document.querySelectorAll('.info-header-tab'),
-    info = document.querySelector('.info'),
+    info = document.querySelector('.info-header'),
     tabContent = document.querySelectorAll('.info-tabcontent');
 
     function hideTabContent(a) {
@@ -76,5 +76,23 @@ let tab = document.querySelectorAll('.info-header-tab'),
         }
     }
     setClock('timer', deadline);
+
+    // modal
+
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+
+        more.addEventListener('click', function() {
+            overlay.style.display = 'block';
+            this.classList.add('more-splash');
+            document.body.style.overflow = 'hidden'; // dont allow to scroll page
+        });
+
+        close.addEventListener('click', function() {
+           overlay.style.display = 'none';
+           more.classList.remove('more-splash');
+           document.body.style.overflow = '';
+        });
 });
 
